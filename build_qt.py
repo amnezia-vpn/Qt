@@ -92,16 +92,4 @@ if __name__ == '__main__':
    # Wait a maximum of xx minutes. assume preinstall took less then 8 min
    p.join(1800)
 
-   # If thread is active
-   if p.is_alive():
-       print('Build timeout exceed, stopping...')
-
-       # Terminate foo
-       p.terminate()
-       p.join()
-
-       for proc in psutil.process_iter():
-           if proc.name() == 'make':
-               proc.kill()
-
    sys.exit(0)
